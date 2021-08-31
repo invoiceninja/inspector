@@ -2,11 +2,17 @@
 
 namespace InvoiceNinja\Inspector;
 
+use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\DB;
 
 class Inspector
 {
     protected string $connectionName = '';
+
+    public function __construct()
+    {
+        DB::connection()->getDoctrineSchemaManager()->getDatabasePlatform()->registerDoctrineTypeMapping('enum', 'string');
+    }
 
     public function setConnectionName(string $connectionName): self
     {
@@ -28,5 +34,20 @@ class Inspector
     public function getTableNames(): array
     {
         return $this->getSchemaManager()->listTableNames();
+    }
+
+    public function getTable(string $table): \Doctrine\DBAL\Schema\Table
+    {
+        return $this->getSchemaManager()->listTableDetails($table);
+    }
+
+    public function getTableColumns(string $table): array
+    {
+        return $this->getSchemaManager()->listTableColumns($table);
+    }
+
+    public function getTableRecords(string $table): Collection
+    {
+        return DB::connection($this->connectionName)->table($table)->get();
     }
 }
