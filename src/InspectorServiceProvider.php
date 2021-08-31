@@ -17,11 +17,11 @@ class InspectorServiceProvider extends ServiceProvider
         // $this->loadTranslationsFrom(__DIR__.'/../resources/lang', 'inspector');
         // $this->loadViewsFrom(__DIR__.'/../resources/views', 'inspector');
         // $this->loadMigrationsFrom(__DIR__.'/../database/migrations');
-        // $this->loadRoutesFrom(__DIR__.'/routes.php');
+        $this->loadRoutesFrom(dirname(__DIR__, 1) . '/routes/web.php');
 
         if ($this->app->runningInConsole()) {
             $this->publishes([
-                __DIR__.'/../config/config.php' => config_path('inspector.php'),
+                __DIR__ . '/../config/config.php' => config_path('inspector.php'),
             ], 'config');
 
             // Publishing the views.
@@ -50,7 +50,7 @@ class InspectorServiceProvider extends ServiceProvider
     public function register()
     {
         // Automatically apply the package configuration
-        $this->mergeConfigFrom(__DIR__.'/../config/config.php', 'inspector');
+        $this->mergeConfigFrom(__DIR__ . '/../config/config.php', 'inspector');
 
         // Register the main class to use with the facade
         $this->app->singleton('inspector', function () {
