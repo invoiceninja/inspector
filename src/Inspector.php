@@ -36,14 +36,14 @@ class Inspector
         return $this->getSchemaManager()->listTableNames();
     }
 
-    public function getTable(string $table): \Doctrine\DBAL\Schema\Table
+    public function getTableSchema(string $table): \Doctrine\DBAL\Schema\Table
     {
         return $this->getSchemaManager()->listTableDetails($table);
     }
 
     public function getTableColumns(string $table): array
     {
-        return $this->getSchemaManager()->listTableColumns($table);
+        return $this->getTableSchema($table)->getColumns();
     }
 
     public function getTableRecords(string $table): Collection
