@@ -24,4 +24,9 @@ class Inspector
     {
         return DB::connection($this->connectionName)->getDoctrineSchemaManager();
     }
+
+    public function getTableNames(): array
+    {
+        return $this->getSchemaManager()->listTableNames();
+    }
 }
