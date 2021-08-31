@@ -2,12 +2,20 @@
 
 namespace InvoiceNinja\Inspector;
 
+use Illuminate\Database\Query\Builder;
+use Illuminate\Http\Request;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\DB;
 
 class Inspector
 {
     protected string $connectionName = '';
+
+    protected array $excludedRequestFields = [
+        'id',
+        '_token',
+        '_method',
+    ];
 
     public function __construct()
     {
@@ -46,8 +54,27 @@ class Inspector
         return $this->getTableSchema($table)->getColumns();
     }
 
-    public function getTableRecords(string $table): Collection
+    public function getTable(string $table): Builder
     {
-        return DB::connection($this->connectionName)->table($table)->get();
+        return DB::connection($this->connectionName)->table($table);
+    }
+
+    public function getTableRecords(string $table, array $columns = ['*']): Collection
+    {
+        return $this->getTable($table)->get($columns);
+    }
+
+    public function getTableRecord(string $table, string $value, string $column = 'id')
+    {
+        return $this->getTable($table)->where($column, '=', $value)->first();
+    }
+
+    public function updateTableRecord(string $table, string $id, Request $request, string $column = 'id'): bool
+    {
+        $data = $request->except(['_token', '_method']);
+
+        return $this->getTable($table)->where($column, '=', $id)->update(
+            \array_diff($data, $this->excludedRequestFields)
+        );
     }
 }
