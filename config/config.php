@@ -4,20 +4,18 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Show tables
+    | Visible tables
     |--------------------------------------------------------------------------
     |
     | This will let us control the tables we want to show. To show
     | all the tables, use asterisk symbol.
     |
     */
-    'show_tables' => [
-        '*',
-    ],
+    'visible_tables' => ['*'],
 
     /*
     |--------------------------------------------------------------------------
-    | Hide tables
+    | Hidden tables
     |--------------------------------------------------------------------------
     |
     | Opposite of `show_tables`. This will let you specify which tables,
@@ -26,5 +24,5 @@ return [
     |
     */
 
-    'hide_tables' => [],
+    'hidden_tables' => [],
 ];

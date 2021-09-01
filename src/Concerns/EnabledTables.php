@@ -10,21 +10,21 @@ trait EnabledTables
     {
         $tables = [];
 
-        foreach (config('inspector.show_tables') as $tableName) {
+        foreach (config('inspector.visible_tables') as $tableName) {
             if (\in_array($tableName, $tableNames)) {
                 $tables[] = $tableName;
             }
         }
 
-        if (\in_array('*', config('inspector.show_tables'))) {
+        if (\in_array('*', config('inspector.visible_tables'))) {
             $tables = $tableNames;
         }
 
-        foreach (config('inspector.hide_tables') as $tableName) {
+        foreach (config('inspector.hidden_tables') as $tableName) {
             $tables = \array_diff($tables, [$tableName]);
         }
 
-        if (\in_array('*', config('inspector.hide_tables'))) {
+        if (\in_array('*', config('inspector.hidden_tables'))) {
             $tables = [];
         }
 
@@ -33,19 +33,19 @@ trait EnabledTables
 
     public function isTableEnabled(string $tableName): bool
     {
-        if (\in_array('*', config('inspector.hide_tables'))) {
+        if (\in_array('*', config('inspector.hidden_tables'))) {
             return false;
         }
 
-        if (\in_array($tableName, config('inspector.hide_tables'))) {
+        if (\in_array($tableName, config('inspector.hidden_tables'))) {
             return false;
         }
 
-        if (\in_array('*', config('inspector.show_tables'))) {
+        if (\in_array('*', config('inspector.visible_tables'))) {
             return true;
         }
 
-        if (\in_array($tableName, config('inspector.show_tables'))) {
+        if (\in_array($tableName, config('inspector.visible_tables'))) {
             return true;
         }
 
