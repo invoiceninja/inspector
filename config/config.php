@@ -11,6 +11,7 @@ return [
     | all the tables, use asterisk symbol.
     |
     */
+    
     'visible_tables' => ['*'],
 
     /*
