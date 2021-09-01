@@ -6,11 +6,12 @@ use Illuminate\Database\Query\Builder;
 use Illuminate\Http\Request;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\DB;
+use InvoiceNinja\Inspector\Concerns\EnabledColumns;
 use InvoiceNinja\Inspector\Concerns\EnabledTables;
 
 class Inspector
 {
-    use EnabledTables;
+    use EnabledTables, EnabledColumns;
 
     protected string $connectionName = '';
 
@@ -60,7 +61,9 @@ class Inspector
     {
         $this->checkTableAvailablility($table);
 
-        return $this->getTableSchema($table)->getColumns();
+        $columns = $this->getTableSchema($table)->getColumns();
+
+        return $this->filterEnabledColumns($columns, $table);
     }
 
     public function getTable(string $table): Builder

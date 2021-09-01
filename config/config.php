@@ -11,7 +11,7 @@ return [
     | all the tables, use asterisk symbol.
     |
     */
-    
+
     'visible_tables' => ['*'],
 
     /*
@@ -26,4 +26,16 @@ return [
     */
 
     'hidden_tables' => [],
+
+    /*
+    |--------------------------------------------------------------------------
+    | Hidden columns
+    |--------------------------------------------------------------------------
+    |
+    | This will let us hide specific columns. Useful when you want to hide,
+    | passwords or unique values.
+    |
+    */
+
+    'hidden_columns' => [],
 ];
