@@ -3,6 +3,7 @@
 namespace InvoiceNinja\Inspector;
 
 use Illuminate\Support\ServiceProvider;
+use Illuminate\View\Compilers\BladeCompiler;
 
 class InspectorServiceProvider extends ServiceProvider
 {
@@ -15,8 +16,16 @@ class InspectorServiceProvider extends ServiceProvider
          * Optional methods to load your package assets
          */
         // $this->loadTranslationsFrom(__DIR__.'/../resources/lang', 'inspector');
-        // $this->loadViewsFrom(__DIR__.'/../resources/views', 'inspector');
         // $this->loadMigrationsFrom(__DIR__.'/../database/migrations');
+        $this->loadViewsFrom(__DIR__.'/../resources/views', 'inspector');
+
+        $this->callAfterResolving(BladeCompiler::class, function (BladeCompiler $blade) {
+            /** @var BladeComponent $component */
+            foreach (config('inspector.components', []) as $alias => $component) {
+                $blade->component($component, $alias, 'inspector');
+            }
+        });
+
         $this->loadRoutesFrom(dirname(__DIR__, 1) . '/routes/web.php');
 
         if ($this->app->runningInConsole()) {
