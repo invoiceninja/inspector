@@ -38,4 +38,8 @@ return [
     */
 
     'hidden_columns' => [],
+
+    'components' => [
+        'input' => InvoiceNinja\Inspector\Components\Input::class,
+    ],
 ];
