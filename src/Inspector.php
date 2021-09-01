@@ -6,9 +6,12 @@ use Illuminate\Database\Query\Builder;
 use Illuminate\Http\Request;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\DB;
+use InvoiceNinja\Inspector\Concerns\EnabledTables;
 
 class Inspector
 {
+    use EnabledTables;
+
     protected string $connectionName = '';
 
     protected array $excludedRequestFields = [
@@ -41,36 +44,50 @@ class Inspector
 
     public function getTableNames(): array
     {
-        return $this->getSchemaManager()->listTableNames();
+        $tableNames = $this->getSchemaManager()->listTableNames();
+
+        return $this->filterEnabledTables($tableNames);
     }
 
     public function getTableSchema(string $table): \Doctrine\DBAL\Schema\Table
     {
+        $this->checkTableAvailablility($table);
+
         return $this->getSchemaManager()->listTableDetails($table);
     }
 
     public function getTableColumns(string $table): array
     {
+        $this->checkTableAvailablility($table);
+
         return $this->getTableSchema($table)->getColumns();
     }
 
     public function getTable(string $table): Builder
     {
+        $this->checkTableAvailablility($table);
+
         return DB::connection($this->connectionName)->table($table);
     }
 
     public function getTableRecords(string $table, array $columns = ['*']): Collection
     {
+        $this->checkTableAvailablility($table);
+
         return $this->getTable($table)->get($columns);
     }
 
     public function getTableRecord(string $table, string $value, string $column = 'id')
     {
+        $this->checkTableAvailablility($table);
+
         return $this->getTable($table)->where($column, '=', $value)->first();
     }
 
     public function updateTableRecord(string $table, string $id, Request $request, string $column = 'id'): bool
     {
+        $this->checkTableAvailablility($table);
+
         $data = $request->except(['_token', '_method']);
 
         return $this->getTable($table)->where($column, '=', $id)->update(
