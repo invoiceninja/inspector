@@ -37,7 +37,11 @@ return [
     |
     */
 
-    'hidden_columns' => [],
+    'hidden_columns' => [
+        'users' => [
+            'password',
+        ],
+    ],
 
     'components' => [
         'input' => InvoiceNinja\Inspector\Components\Input::class,
