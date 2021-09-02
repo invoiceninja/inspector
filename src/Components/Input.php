@@ -18,6 +18,7 @@ class Input extends BladeComponent
         '\Date' => 'date',
         '\Decimal' => 'decimal',
         '\SmallInt' => 'number',
+        '\Boolean' => 'boolean',
     ];
 
     public function __construct(Column $column, $value)
