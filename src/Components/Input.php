@@ -15,6 +15,7 @@ class Input extends BladeComponent
         '\Integer' => 'number',
         '\String' => 'text',
         '\DateTime' => 'datetime-local',
+        '\Date' => 'date',
     ];
 
     public function __construct(Column $column, $value)
