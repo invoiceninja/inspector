@@ -13,6 +13,8 @@ class Input extends BladeComponent
 
     protected array $mapping = [
         '\Integer' => 'number',
+        '\String' => 'text',
+        '\DateTime' => 'datetime-local',
     ];
 
     public function __construct(Column $column, $value)
