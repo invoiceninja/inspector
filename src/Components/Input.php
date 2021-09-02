@@ -16,6 +16,7 @@ class Input extends BladeComponent
         '\String' => 'text',
         '\DateTime' => 'datetime-local',
         '\Date' => 'date',
+        '\Decimal' => 'decimal',
     ];
 
     public function __construct(Column $column, $value)
