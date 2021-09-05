@@ -6,17 +6,18 @@ use Illuminate\Database\Query\Builder;
 use Illuminate\Http\Request;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Validator;
 use InvoiceNinja\Inspector\Concerns\EnabledColumns;
 use InvoiceNinja\Inspector\Concerns\EnabledTables;
+use InvoiceNinja\Inspector\Concerns\ValidationRules;
 
 class Inspector
 {
-    use EnabledTables, EnabledColumns;
+    use EnabledTables, EnabledColumns, ValidationRules;
 
     protected string $connectionName = '';
 
     protected array $excludedRequestFields = [
-        'id',
         '_token',
         '_method',
     ];
@@ -96,5 +97,22 @@ class Inspector
         return $this->getTable($table)->where($column, '=', $id)->update(
             \array_diff($data, $this->excludedRequestFields)
         );
+    }
+
+    public function validate(Request $request, string $table)
+    {
+        $this->checkTableAvailablility($table);
+
+        $data = $request->except(['_token', '_method']);
+
+        $fields = \array_diff($data, $this->excludedRequestFields);
+
+        $columns = $this->getTableColumns($table);
+
+        foreach ($fields as $field => $value) {
+            $fields[$field] = $this->generateValidationFields($field, $columns);
+        }
+
+        return Validator::make($request->all())->validate();
     }
 }
