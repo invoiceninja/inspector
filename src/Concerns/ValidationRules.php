@@ -43,6 +43,7 @@ trait ValidationRules
             case '\Integer':
             case '\SmallInt':
                 \array_push($rules, 'int');
+                \array_push($rules, 'numeric');
                 break;
 
             case '\String':
