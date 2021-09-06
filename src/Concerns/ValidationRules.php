@@ -54,6 +54,10 @@ trait ValidationRules
                 \array_push($rules, 'between:0,99.99');
                 break;
 
+            case '\Date': 
+                \array_push($rules, 'date');
+                break;
+
             default:
                 break;
         }
