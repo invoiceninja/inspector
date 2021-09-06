@@ -92,20 +92,20 @@ class Inspector
     {
         $this->checkTableAvailablility($table);
 
-        $data = $request->except(['_token', '_method']);
+        $data = $request->except($this->excludedRequestFields);
 
-        return $this->getTable($table)->where($column, '=', $id)->update(
-            \array_diff($data, $this->excludedRequestFields)
-        );
+        $data = $this->transformFields($data);
+
+        return $this->getTable($table)->where($column, '=', $id)->update($data);
     }
 
     public function validate(Request $request, string $table)
     {
         $this->checkTableAvailablility($table);
 
-        $data = $request->except(['_token', '_method']);
-
-        $fields = \array_diff($data, $this->excludedRequestFields);
+        $fields = $this->transformFields(
+            $request->except($this->excludedRequestFields)
+        );
 
         $columns = $this->getTableColumns($table);
 
