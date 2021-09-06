@@ -47,7 +47,11 @@ trait ValidationRules
                 break;
 
             case '\String':
-                \array_push($rules, 'text');
+                \array_push($rules, 'string');
+                break;
+
+            case '\Decimal':
+                \array_push($rules, 'between:0,99.99');
                 break;
 
             default:
