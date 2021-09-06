@@ -113,6 +113,6 @@ class Inspector
             $fields[$field] = $this->generateValidationFields($field, $columns);
         }
 
-        return Validator::make($request->all())->validate();
+        return Validator::make($request->all(), $fields)->validate();
     }
 }

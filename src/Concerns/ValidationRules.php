@@ -33,7 +33,7 @@ trait ValidationRules
 
     private static function length(\Doctrine\DBAL\Schema\Column $column, &$rules): void
     {
-        if (! \is_null($column->getLength())) {
+        if (\is_null($column->getLength()) || $column->getLength() === 0) {
             return;
         }
 
