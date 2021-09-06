@@ -58,6 +58,10 @@ trait ValidationRules
                 \array_push($rules, 'date');
                 break;
 
+            case '\DateTime':
+                \array_push($rules, 'date_format:Y-m-d\TH:i');
+                break;
+
             default:
                 break;
         }
