@@ -44,6 +44,10 @@ trait ValidationRules
                 \array_push($rules, 'int');
                 break;
 
+            case '\String':
+                \array_push($rules, 'text');
+                break;
+                
             default:
                 break;
         }
