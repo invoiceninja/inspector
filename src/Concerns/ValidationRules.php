@@ -41,13 +41,14 @@ trait ValidationRules
     {
         switch ($column->getType()) {
             case '\Integer':
+            case '\SmallInt':
                 \array_push($rules, 'int');
                 break;
 
             case '\String':
                 \array_push($rules, 'text');
                 break;
-                
+
             default:
                 break;
         }
