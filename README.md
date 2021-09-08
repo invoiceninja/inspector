@@ -16,7 +16,7 @@ You can install the package via composer:
 composer require invoiceninja/inspector
 ```
 ## Usage & documentation
-Documentation & usage can be found in [Invoice Ninja documentation](https://invoiceninja.github/docs/packages/inspector).
+Documentation & usage can be found in [Invoice Ninja documentation](https://invoiceninja.github.io/docs/packages/inspector).
 ## Contributing
 
 Please see [CONTRIBUTING](https://github.com/invoiceninja/invoiceninja/blob/master/CONTRIBUTING.md) for details.
