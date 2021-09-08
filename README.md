@@ -1,10 +1,10 @@
-# Very short description of the package
+# Inspector
 
-[![Latest Version on Packagist](https://img.shields.io/packagist/v/invoiceninja/inspector.svg?style=flat-square)](https://packagist.org/packages/invoiceninja/inspector)
+<!-- [![Latest Version on Packagist](https://img.shields.io/packagist/v/invoiceninja/inspector.svg?style=flat-square)](https://packagist.org/packages/invoiceninja/inspector)
 [![Total Downloads](https://img.shields.io/packagist/dt/invoiceninja/inspector.svg?style=flat-square)](https://packagist.org/packages/invoiceninja/inspector)
-![GitHub Actions](https://github.com/invoiceninja/inspector/actions/workflows/main.yml/badge.svg)
+![GitHub Actions](https://github.com/invoiceninja/inspector/actions/workflows/main.yml/badge.svg) -->
 
-This is where your description should go. Try and limit it to a paragraph or two, and maybe throw in a mention of what PSRs you support to avoid any confusion with users and contributors.
+Database management simplified. Inspector will let you take care of [CRUD](https://en.wikipedia.org/wiki/Create,_read,_update_and_delete) without taking over your frontend.
 
 ## Installation
 
@@ -13,30 +13,15 @@ You can install the package via composer:
 ```bash
 composer require invoiceninja/inspector
 ```
-
-## Usage
-
-```php
-// Usage description here
-```
-
-### Testing
-
-```bash
-composer test
-```
-
-### Changelog
-
-Please see [CHANGELOG](CHANGELOG.md) for more information what has changed recently.
-
+## Usage & documentation
+Documentation & usage can be found in [Invoice Ninja documentation](https://invoiceninja.github/docs/packages/inspector).
 ## Contributing
 
-Please see [CONTRIBUTING](CONTRIBUTING.md) for details.
+Please see [CONTRIBUTING](https://github.com/invoiceninja/invoiceninja/blob/master/CONTRIBUTING.md) for details.
 
 ### Security
 
-If you discover any security related issues, please email benjamin.beganovic4@outlook.com instead of using the issue tracker.
+If you discover any security related issues, please email contact@invoiceninja.com instead of using the issue tracker.
 
 ## Credits
 
@@ -46,7 +31,3 @@ If you discover any security related issues, please email benjamin.beganovic4@ou
 ## License
 
 The MIT License (MIT). Please see [License File](LICENSE.md) for more information.
-
-## Laravel Package Boilerplate
-
-This package was generated using the [Laravel Package Boilerplate](https://laravelpackageboilerplate.com).
