@@ -46,5 +46,6 @@ return [
     'components' => [
         'input' => InvoiceNinja\Inspector\Components\Input::class,
         'tables' => InvoiceNinja\Inspector\Components\Tables::class,
+        'columns' => InvoiceNinja\Inspector\Components\Columns::class,
     ],
 ];
