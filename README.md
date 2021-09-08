@@ -1,4 +1,6 @@
-# Inspector
+<p align="center">
+    <img src="https://raw.githubusercontent.com/invoiceninja/inspector/main/resources/static/cover.png" alt="snappdf logo">
+</p>
 
 <!-- [![Latest Version on Packagist](https://img.shields.io/packagist/v/invoiceninja/inspector.svg?style=flat-square)](https://packagist.org/packages/invoiceninja/inspector)
 [![Total Downloads](https://img.shields.io/packagist/dt/invoiceninja/inspector.svg?style=flat-square)](https://packagist.org/packages/invoiceninja/inspector)
