@@ -149,6 +149,10 @@ To generate link to specific record, pass `show-route-name`:
 
 This will generate URL like this: `/tables/{table}/edit?id=1`.
 
+| #    | id | migration                            | batch |
+|------|----|--------------------------------------|-------|
+| View | 1  | 2014_10_12_000000_create_users_table | 1     |
+
 ## Contributing
 
 Please see [CONTRIBUTING](https://github.com/invoiceninja/invoiceninja/blob/master/CONTRIBUTING.md) for details.
