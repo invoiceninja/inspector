@@ -72,6 +72,24 @@ This will show nice preview with all tables in your database.
 | Personal access tokens |
 | Users                  |
 
+Awesome, let's make link to the individual table page. We can do this by passing `show-route-name` parameter in the component.
+
+```php
+<x-inspector-tables :tables="$tables" show-route-name="tables.show" />
+```
+
+> Note: Route name is fully **optional**. We're using resourceful controller, following Laravel conventions.
+
+By doing that, we should get new "View" action in our table:
+
+| Table                  | Action |
+|------------------------|--------|
+| Failed jobs            | View   |
+| Migrations             | View   |
+| Password resets        | View   |
+| Personal access tokens | View   |
+| Users                  | View   |
+
 ## Contributing
 
 Please see [CONTRIBUTING](https://github.com/invoiceninja/invoiceninja/blob/master/CONTRIBUTING.md) for details.
