@@ -8,6 +8,17 @@
 
 Simplified database records management. Inspector will let you take care of [CRUD](https://en.wikipedia.org/wiki/Create,_read,_update_and_delete) without taking over your frontend.
 
+## Example
+```php
+$inspector = new \InvoiceNinja\Inspector\Inspector();
+
+// List all tables in the database
+$tables = $inspector->getTableNames();
+
+// Get table columns
+$columns = $inspector->getTableColumns('users');
+```
+
 ## Installation
 
 You can install the package via composer:
@@ -15,8 +26,10 @@ You can install the package via composer:
 ```bash
 composer require invoiceninja/inspector
 ```
-## Usage & documentation
-Documentation & usage can be found in [Invoice Ninja documentation](https://invoiceninja.github.io/docs/packages/inspector).
+## Requirements
+- Laravel 8.x
+- PHP 7.4+
+
 ## Contributing
 
 Please see [CONTRIBUTING](https://github.com/invoiceninja/invoiceninja/blob/master/CONTRIBUTING.md) for details.
