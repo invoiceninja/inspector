@@ -28,6 +28,7 @@ $columns = $inspector->getTableColumns('users');
   - [Showing table columns](#showing-table-columns)
   - [Showing table records](#showing-table-records)
   - [Showing & editing row in the table](#showing--editing-row-in-the-table)
+  - [Updating table row](#updating-table-row)
 - [Contributing](#contributing)
   - [Security](#security)
 - [Credits](#credits)
@@ -193,6 +194,25 @@ public function edit(string $table, \Illuminate\Http\Request $request, \InvoiceN
 This will generate the form with all columns as input fields & their values as part of input values.
 
 > Note: `update-route-name` is **optional**.
+
+### Updating table row
+
+One thing that is left is updating the table row. As you can probably guess, Inspector provides helper method - `updateTableRecord`.
+
+```php
+public function update(string $table, \Illuminate\Http\Request $request, \InvoiceNinja\Inspector\Inspector $inspector)
+{
+    $inspector->validate($request, $table);
+
+    $success = $inspector->updateTableRecord($table, $request->query('id'), $request);
+
+    if ($success) {
+        return back()->withMessage('Successfully updated the record.');
+    }
+
+    return back()->withMessage('Oops, something went wrong.');
+}
+```
 
 ## Contributing
 
