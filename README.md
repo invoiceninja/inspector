@@ -30,6 +30,11 @@ composer require invoiceninja/inspector
 - Laravel 8.x
 - PHP 7.4+
 
+## Philosophy
+Inspector isn't your regular admin panel. It is meant to be used as part of the admin panel. That said, we wanted something that is lightweight and it doesn't take over your front end. 
+
+It doesn't care about your CSS framework, do you use Livewire or not, because you're in charge of integrating it. Don't worry, it's extremely simple.
+
 ## Contributing
 
 Please see [CONTRIBUTING](https://github.com/invoiceninja/invoiceninja/blob/master/CONTRIBUTING.md) for details.
