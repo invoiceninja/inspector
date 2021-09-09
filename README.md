@@ -30,6 +30,7 @@ $columns = $inspector->getTableColumns('users');
   - [Showing & editing row in the table](#showing--editing-row-in-the-table)
   - [Updating table row](#updating-table-row)
 - [Configuration](#configuration)
+- [Available methods](#available-methods)
 - [Contributing](#contributing)
   - [Security](#security)
 - [Credits](#credits)
@@ -224,6 +225,29 @@ php artisan vendor:publish --provider="InvoiceNinja\Inspector\InspectorServicePr
 
 With configuration published you can control visible tables, as well as hidden, component classes & modify them as you wish.
 
+## Available methods
+
+- `setConnectionName(string $connectionName): self` - Set the database connection. By default it will pick up your default app connection.
+
+- `getConnectionName(): string` - Retrieve the current connection name.
+
+- `getSchemaManager(): Doctrine\DBAL\Schema\AbstractSchemaManager` - Retrieve current schema manager instance.
+
+- `getTableNames(): array` - Retrieve the list of table names in the database.
+
+- `getTableSchema(string $table): Doctrine\DBAL\Schema\Table` - Retrieve `Table` representation of table.
+
+- `getTableColumns(string $table): array` - Retrieve all columns for specified table.
+
+- `getTable(string $table): Illuminate\Database\Query\Builder` - Table instance of query builder.
+
+- `getTableRecords(string $table, array $columns = ['*']): Illuminate\Support\Collection` - Retrieve all records for the specified table.
+
+- `getTableRecord(string $table, string $value, string $column = 'id'): mixed` - Retrieve single record for specified table.
+
+- `updateTableRecord(string $table, string $id, Request $request, string $column = 'id'): bool` - Update specific table row.
+
+- `validate(Request $request, string $table)` - Validate specific request.
 ## Contributing
 
 Please see [CONTRIBUTING](https://github.com/invoiceninja/invoiceninja/blob/master/CONTRIBUTING.md) for details.
