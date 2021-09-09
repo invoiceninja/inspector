@@ -48,5 +48,6 @@ return [
         'tables' => InvoiceNinja\Inspector\Components\Tables::class,
         'columns' => InvoiceNinja\Inspector\Components\Columns::class,
         'records' => InvoiceNinja\Inspector\Components\Records::class,
+        'record' => InvoiceNinja\Inspector\Components\Record::class,
     ],
 ];

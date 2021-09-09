@@ -30,7 +30,7 @@ class Input extends BladeComponent
 
     public function render(): View
     {
-        $component = $this->mapping[(string) $this->column->getType()] ?? 'text';
+        $component = $this->mapping[$this->column->getType()->getName()] ?? 'text';
 
         return view("inspector::components.{$component}");
     }
