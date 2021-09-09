@@ -26,7 +26,7 @@ class InspectorServiceProvider extends ServiceProvider
             }
         });
 
-        $this->loadRoutesFrom(dirname(__DIR__, 1) . '/routes/web.php');
+        // $this->loadRoutesFrom(dirname(__DIR__, 1) . '/routes/web.php');
 
         if ($this->app->runningInConsole()) {
             $this->publishes([

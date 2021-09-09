@@ -29,6 +29,7 @@ $columns = $inspector->getTableColumns('users');
   - [Showing table records](#showing-table-records)
   - [Showing & editing row in the table](#showing--editing-row-in-the-table)
   - [Updating table row](#updating-table-row)
+- [Configuration](#configuration)
 - [Contributing](#contributing)
   - [Security](#security)
 - [Credits](#credits)
@@ -213,6 +214,9 @@ public function update(string $table, \Illuminate\Http\Request $request, \Invoic
     return back()->withMessage('Oops, something went wrong.');
 }
 ```
+
+## Configuration
+We did our best to make Inspector as configurable as possible. 
 
 ## Contributing
 
