@@ -9,9 +9,9 @@ class Tables extends BladeComponent
 {
     public array $tables;
 
-    public string $showRouteName;
+    public ?string $showRouteName;
 
-    public function __construct(array $tables, string $showRouteName)
+    public function __construct(array $tables, string $showRouteName = null)
     {
         $this->tables = $tables;
 
