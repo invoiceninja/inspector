@@ -31,7 +31,7 @@ class InspectorServiceProvider extends ServiceProvider
         if ($this->app->runningInConsole()) {
             $this->publishes([
                 __DIR__ . '/../config/config.php' => config_path('inspector.php'),
-            ], 'config');
+            ], 'inspector-config');
 
             // Publishing the views.
             /*$this->publishes([

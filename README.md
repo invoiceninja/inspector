@@ -216,7 +216,13 @@ public function update(string $table, \Illuminate\Http\Request $request, \Invoic
 ```
 
 ## Configuration
-We did our best to make Inspector as configurable as possible. 
+We did our best to make Inspector as configurable as possible. To tinker with configuration file, make sure to publish it first.
+
+```bash
+php artisan vendor:publish --provider="InvoiceNinja\Inspector\InspectorServiceProvider"
+```
+
+With configuration published you can control visible tables, as well as hidden, component classes & modify them as you wish.
 
 ## Contributing
 
