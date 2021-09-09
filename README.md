@@ -115,6 +115,40 @@ That will produce nice table with all columns/types.
 | migration | string  |
 | batch     | integer |
 
+### Showing table records
+
+To show table records, we can make use of `getTableRecords` method.
+
+```php
+public function show(string $table, \InvoiceNinja\Inspector\Inspector $inspector)
+{
+    return view('tables.show', [
+        'table' => $inspector->getTableSchema($table),
+        'columns' => $inspector->getTableColumns($table),
+        'records' => $inspector->getTableRecords($table),
+    ]);
+}
+```
+
+```html
+<x-inspector-records 
+    :table="$table" 
+    :columns="$columns"
+    :records="$records" /> 
+```
+
+To generate link to specific record, pass `show-route-name`:
+
+```html
+<x-inspector-records 
+    :table="$table" 
+    :columns="$columns"
+    :records="$records"
+    show-route-name="tables.edit" /> 
+```
+
+This will generate URL like this: `/tables/{table}/edit?id=1`.
+
 ## Contributing
 
 Please see [CONTRIBUTING](https://github.com/invoiceninja/invoiceninja/blob/master/CONTRIBUTING.md) for details.
