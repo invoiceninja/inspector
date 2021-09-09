@@ -19,6 +19,19 @@ $tables = $inspector->getTableNames();
 $columns = $inspector->getTableColumns('users');
 ```
 
+- [Example](#example)
+- [Installation](#installation)
+- [Requirements](#requirements)
+- [Philosophy](#philosophy)
+- [Usage](#usage)
+  - [Showing tables in database](#showing-tables-in-database)
+  - [Showing table columns](#showing-table-columns)
+  - [Showing table records](#showing-table-records)
+- [Contributing](#contributing)
+  - [Security](#security)
+- [Credits](#credits)
+- [License](#license)
+
 ## Installation
 
 You can install the package via composer:
