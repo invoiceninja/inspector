@@ -59,10 +59,18 @@ public function index(\InvoiceNinja\Inspector\Inspector $inspector)
 Now, to show all these tables, you can make your own loop. To speed things up, we've provided some prebuilt components.
 
 ```php
-<x-inspector-tables :tables="$resources" />
+<x-inspector-tables :tables="$tables" />
 ```
 
 This will show nice preview with all tables in your database.
+
+| Tables                 |
+|------------------------|
+| Failed jobs            |
+| Migrations             |
+| Password resets        |
+| Personal access tokens |
+| Users                  |
 
 ## Contributing
 
