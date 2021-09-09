@@ -27,6 +27,7 @@ $columns = $inspector->getTableColumns('users');
   - [Showing tables in database](#showing-tables-in-database)
   - [Showing table columns](#showing-table-columns)
   - [Showing table records](#showing-table-records)
+  - [Showing & editing row in the table](#showing--editing-row-in-the-table)
 - [Contributing](#contributing)
   - [Security](#security)
 - [Credits](#credits)
@@ -165,6 +166,31 @@ This will generate URL like this: `/tables/{table}/edit?id=1`.
 | #    | id | migration                            | batch |
 |------|----|--------------------------------------|-------|
 | View | 1  | 2014_10_12_000000_create_users_table | 1     |
+
+### Showing & editing row in the table
+
+Showing page for specific row is super simple. We can make use of `getTableRecord` method.
+
+```php
+public function edit(string $table, \Illuminate\Http\Request $request, \InvoiceNinja\Inspector\Inspector $inspector)
+{
+    return view('tables.edit', [
+        'table' => $inspector->getTableSchema($table),
+        'columns' => $inspector->getTableColumns($table),
+        'record' => $inspector->getTableRecord($table, $request->query('id')),
+    ]);
+}
+```
+
+```html
+<x-inspector-record 
+    :record="$record" 
+    :table="$table"
+    :columns="$columns"
+    update-route-name="tables.update" />
+```
+
+This will generate the form with all columns as input fields & their values as part of input values.
 
 ## Contributing
 
