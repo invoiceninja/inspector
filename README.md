@@ -51,7 +51,7 @@ php artisan make:controller TableController
 public function index(\InvoiceNinja\Inspector\Inspector $inspector)
 {
     return view('tables.index', [
-        'tables' => $inspector->getTableNames()
+        'tables' => $inspector->getTableNames(),
     ]);
 }
 ```
