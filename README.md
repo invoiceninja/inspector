@@ -35,6 +35,35 @@ Inspector isn't your regular admin panel. It is meant to be used as part of the 
 
 It doesn't care about your CSS framework, do you use Livewire or not, because you're in charge of integrating it. Don't worry, it's extremely simple.
 
+## Usage
+
+Like we previously said, **you're in charge** of integrating Inspector, but we will give you the most simple examples here.
+
+Start by creating one controller, we will name it `TableController`.
+
+```bash
+php artisan make:controller TableController
+```
+
+### Showing all tables in database
+
+```php
+public function index(\InvoiceNinja\Inspector\Inspector $inspector)
+{
+    return view('tables.index', [
+        'tables' => $inspector->getTableNames()
+    ]);
+}
+```
+
+Now, to show all these tables, you can make your own loop. To speed things up, we've provided some prebuilt components.
+
+```php
+<x-inspector-tables :tables="$resources" />
+```
+
+This will show nice preview with all tables in your database.
+
 ## Contributing
 
 Please see [CONTRIBUTING](https://github.com/invoiceninja/invoiceninja/blob/master/CONTRIBUTING.md) for details.
