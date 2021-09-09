@@ -10,7 +10,7 @@
             @foreach ($columns as $column => $properties)
                 <tr>
                     <td class="px-4 py-2 text-gray-900 border">{{ $column }}</td>
-                    <td class="px-4 py-2 text-gray-900 border">{{ $properties->getType() }}</td>
+                    <td class="px-4 py-2 text-gray-900 border">{{ $properties->getType()->getName() }} </td>
                 </tr>
             @endforeach
         </tbody>

@@ -45,7 +45,7 @@ Start by creating one controller, we will name it `TableController`.
 php artisan make:controller TableController
 ```
 
-### Showing all tables in database
+### Showing tables in database
 
 ```php
 public function index(\InvoiceNinja\Inspector\Inspector $inspector)
@@ -74,7 +74,7 @@ This will show nice preview with all tables in your database.
 
 Awesome, let's make link to the individual table page. We can do this by passing `show-route-name` parameter in the component.
 
-```php
+```html
 <x-inspector-tables :tables="$tables" show-route-name="tables.show" />
 ```
 
@@ -89,6 +89,31 @@ By doing that, we should get new "View" action in our table:
 | Password resets        | View   |
 | Personal access tokens | View   |
 | Users                  | View   |
+
+### Showing table columns
+
+It might be useful for you to preview table columns & their types. To achieve that we can use `getTableColumns` method.
+
+```php
+public function show(string $table, \InvoiceNinja\Inspector\Inspector $inspector)
+{
+    return view('tables.show', [
+        'columns' => $inspector->getTableColumns($table),
+    ]);
+}
+```
+
+```html
+<x-inspector-columns :columns="$columns" />
+```
+
+That will produce nice table with all columns/types.
+
+| Column    | Type    |
+|-----------|---------|
+| id        | integer |
+| migration | string  |
+| batch     | integer |
 
 ## Contributing
 
