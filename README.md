@@ -192,6 +192,8 @@ public function edit(string $table, \Illuminate\Http\Request $request, \InvoiceN
 
 This will generate the form with all columns as input fields & their values as part of input values.
 
+> Note: `update-route-name` is **optional**.
+
 ## Contributing
 
 Please see [CONTRIBUTING](https://github.com/invoiceninja/invoiceninja/blob/master/CONTRIBUTING.md) for details.
