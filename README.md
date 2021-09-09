@@ -24,7 +24,7 @@ $columns = $inspector->getTableColumns('users');
 - [Requirements](#requirements)
 - [Philosophy](#philosophy)
 - [Usage](#usage)
-  - [Showing tables in database](#showing-tables-in-database)
+  - [Showing tables in the database](#showing-tables-in-the-database)
   - [Showing table columns](#showing-table-columns)
   - [Showing table records](#showing-table-records)
   - [Showing & editing row in the table](#showing--editing-row-in-the-table)
@@ -62,7 +62,7 @@ Start by creating one controller, we will name it `TableController`.
 php artisan make:controller TableController
 ```
 
-### Showing tables in database
+### Showing tables in the database
 
 ```php
 public function index(\InvoiceNinja\Inspector\Inspector $inspector)
@@ -79,7 +79,7 @@ Now, to show all these tables, you can make your own loop. To speed things up, w
 <x-inspector-tables :tables="$tables" />
 ```
 
-This will show nice preview with all tables in your database.
+This will show a nice preview of all tables in your database.
 
 | Tables                 |
 |------------------------|
@@ -89,15 +89,15 @@ This will show nice preview with all tables in your database.
 | Personal access tokens |
 | Users                  |
 
-Awesome, let's make link to the individual table page. We can do this by passing `show-route-name` parameter in the component.
+Awesome, let's make the link to the individual table page. We can do this by passing the `show-route-name` parameter in the component.
 
 ```html
 <x-inspector-tables :tables="$tables" show-route-name="tables.show" />
 ```
 
-> Note: Route name is fully **optional**. We're using resourceful controller, following Laravel conventions.
+> Note: Route name is fully **optional**. We're using a resourceful controller, following Laravel conventions.
 
-By doing that, we should get new "View" action in our table:
+By doing that, we should get a new "View" action in our table:
 
 | Table                  | Action |
 |------------------------|--------|
@@ -109,7 +109,7 @@ By doing that, we should get new "View" action in our table:
 
 ### Showing table columns
 
-It might be useful for you to preview table columns & their types. To achieve that we can use `getTableColumns` method.
+It might be useful for you to preview table columns & their types. To achieve that we can use the `getTableColumns` method.
 
 ```php
 public function show(string $table, \InvoiceNinja\Inspector\Inspector $inspector)
@@ -124,7 +124,7 @@ public function show(string $table, \InvoiceNinja\Inspector\Inspector $inspector
 <x-inspector-columns :columns="$columns" />
 ```
 
-That will produce nice table with all columns/types.
+That will produce a nice table with all columns/types.
 
 | Column    | Type    |
 |-----------|---------|
@@ -134,7 +134,7 @@ That will produce nice table with all columns/types.
 
 ### Showing table records
 
-To show table records, we can make use of `getTableRecords` method.
+To show table records, we can make use of the `getTableRecords` method.
 
 ```php
 public function show(string $table, \InvoiceNinja\Inspector\Inspector $inspector)
@@ -154,7 +154,7 @@ public function show(string $table, \InvoiceNinja\Inspector\Inspector $inspector
     :records="$records" /> 
 ```
 
-To generate link to specific record, pass `show-route-name`:
+To generate a link to a specific record, pass `show-route-name`:
 
 ```html
 <x-inspector-records 
@@ -172,7 +172,7 @@ This will generate URL like this: `/tables/{table}/edit?id=1`.
 
 ### Showing & editing row in the table
 
-Showing page for specific row is super simple. We can make use of `getTableRecord` method.
+Showing a page for the specific row is super simple. We can make use of the `getTableRecord` method.
 
 ```php
 public function edit(string $table, \Illuminate\Http\Request $request, \InvoiceNinja\Inspector\Inspector $inspector)
@@ -199,7 +199,7 @@ This will generate the form with all columns as input fields & their values as p
 
 ### Updating table row
 
-One thing that is left is updating the table row. As you can probably guess, Inspector provides helper method - `updateTableRecord`.
+One thing that is left is updating the table row. As you can probably guess, Inspector provides a helper method - `updateTableRecord`.
 
 ```php
 public function update(string $table, \Illuminate\Http\Request $request, \InvoiceNinja\Inspector\Inspector $inspector)
@@ -217,13 +217,13 @@ public function update(string $table, \Illuminate\Http\Request $request, \Invoic
 ```
 
 ## Configuration
-We did our best to make Inspector as configurable as possible. To tinker with configuration file, make sure to publish it first.
+We did our best to make Inspector as configurable as possible. To tinker with a configuration file, make sure to publish it first.
 
 ```bash
 php artisan vendor:publish --provider="InvoiceNinja\Inspector\InspectorServiceProvider"
 ```
 
-With configuration published you can control visible tables, as well as hidden, component classes & modify them as you wish.
+With configuration published, you can control visible tables, as well as hidden, component classes & modify them as you wish.
 
 ## Available methods
 
@@ -254,7 +254,7 @@ Please see [CONTRIBUTING](https://github.com/invoiceninja/invoiceninja/blob/mast
 
 ### Security
 
-If you discover any security related issues, please email contact@invoiceninja.com instead of using the issue tracker.
+If you discover any security-related issues, please email contact@invoiceninja.com instead of using the issue tracker.
 
 ## Credits
 
