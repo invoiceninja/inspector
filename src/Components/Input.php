@@ -12,13 +12,13 @@ class Input extends BladeComponent
     public $value;
 
     protected array $mapping = [
-        '\Integer' => 'number',
-        '\String' => 'text',
-        '\DateTime' => 'datetime-local',
-        '\Date' => 'date',
-        '\Decimal' => 'decimal',
-        '\SmallInt' => 'number',
-        '\Boolean' => 'boolean',
+        'integer' => 'number',
+        'string' => 'text',
+        'datetime' => 'datetime-local',
+        'date' => 'date',
+        'decimal' => 'decimal',
+        'smallint' => 'number',
+        'boolean' => 'boolean',
     ];
 
     public function __construct(Column $column, $value)
