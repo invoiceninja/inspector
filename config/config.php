@@ -43,6 +43,16 @@ return [
         ],
     ],
 
+    /*
+    |--------------------------------------------------------------------------
+    | Components
+    |--------------------------------------------------------------------------
+    |
+    | If you want to modify single component or logic behind it,
+    | feel free to point the component classes here.
+    |
+    */
+
     'components' => [
         'input' => InvoiceNinja\Inspector\Components\Input::class,
         'tables' => InvoiceNinja\Inspector\Components\Tables::class,
