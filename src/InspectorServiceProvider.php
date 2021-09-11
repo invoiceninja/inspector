@@ -26,8 +26,6 @@ class InspectorServiceProvider extends ServiceProvider
             }
         });
 
-        // $this->loadRoutesFrom(dirname(__DIR__, 1) . '/routes/web.php');
-
         if ($this->app->runningInConsole()) {
             $this->publishes([
                 __DIR__ . '/../config/config.php' => config_path('inspector.php'),
