@@ -2,7 +2,7 @@
 
 All notable changes to `inspector` will be documented in this file
 
-## 4.0.0 - unreleased
+## 4.0.0
 
 - Dropped support for Laravel versions before 12.
 - Added support for Laravel 12 and 13.
