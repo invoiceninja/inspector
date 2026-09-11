@@ -1,5 +1,5 @@
 <form method="POST"
-    action="{{ $updateRouteName ? route($updateRouteName, ['table' => $table->getName(), 'id' => $record->id]) : '#' }}">
+    action="{{ $updateRouteName ? route($updateRouteName, ['table' => $table['name'], 'id' => $record->id]) : '#' }}">
 
     @csrf
     @method('put')
@@ -7,13 +7,13 @@
     @foreach ($columns as $column)
         <div class="{{ $attributes['input-wrapper-class'] ?? '' }}">
             <dt class="{{ $attributes['input-label-class'] ?? '' }}">
-                {{ $column->getName() }}
+                {{ $column['name'] }}
             </dt>
 
             <dd class="{{ $attributes['input-field-wrapper-class'] ?? '' }}">
-                <x-inspector-input :column="$column" value="{{ $record->{$column->getName()} }}" />
+                <x-inspector-input :column="$column" value="{{ $record->{$column['name']} }}" />
 
-                @error($column->getName())
+                @error($column['name'])
                     <span class="{{ $attributes['validation-class'] ?? '' }}">{{ $message }}</span>
                 @enderror
             </dd>

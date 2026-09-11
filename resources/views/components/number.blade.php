@@ -1,4 +1,4 @@
 <input 
-    name="{{ $column->getName() }}" 
+    name="{{ $column['name'] }}" 
     value="{{ $value }}" 
     type="number" />

@@ -3,11 +3,10 @@
 namespace InvoiceNinja\Inspector\Components;
 
 use Illuminate\Contracts\View\View;
-use Doctrine\DBAL\Schema\Column;
 
 class Input extends BladeComponent
 {
-    public Column $column;
+    public array $column;
 
     public $value;
 
@@ -21,7 +20,7 @@ class Input extends BladeComponent
         'boolean' => 'boolean',
     ];
 
-    public function __construct(Column $column, $value)
+    public function __construct(array $column, $value)
     {
         $this->column = $column;
 
@@ -30,7 +29,7 @@ class Input extends BladeComponent
 
     public function render(): View
     {
-        $component = $this->mapping[$this->column->getType()->getName()] ?? 'text';
+        $component = $this->mapping[$this->column['type_name']] ?? 'text';
 
         return view("inspector::components.{$component}");
     }

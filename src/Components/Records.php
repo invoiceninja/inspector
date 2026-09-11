@@ -13,11 +13,11 @@ class Records extends BladeComponent
 
     public array $columns;
 
-    public \Doctrine\DBAL\Schema\Table $table;
+    public array $table;
 
     public ?string $showRouteName;
 
-    public function __construct($records, array $columns, \Doctrine\DBAL\Schema\Table $table, string $showRouteName = null)
+    public function __construct($records, array $columns, array $table, string $showRouteName = null)
     {
         $this->records = $records;
 

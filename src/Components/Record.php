@@ -3,19 +3,18 @@
 namespace InvoiceNinja\Inspector\Components;
 
 use Illuminate\Contracts\View\View;
-use Doctrine\DBAL\Schema\Table;
 
 class Record extends BladeComponent
 {
     public $record;
 
-    public Table $table;
+    public array $table;
 
     public array $columns;
 
     public ?string $updateRouteName;
 
-    public function __construct($record, Table $table, array $columns, string $updateRouteName = null)
+    public function __construct($record, array $table, array $columns, string $updateRouteName = null)
     {
         $this->columns = $columns;
 

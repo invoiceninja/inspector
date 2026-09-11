@@ -12,7 +12,7 @@
                     <td class="{{ $attributes['td-class'] ?? '' }}">
                         @if ($showRouteName)
                             <a
-                                href="{{ route($showRouteName, ['table' => $table->getName(), 'id' => $row->id]) }}">{{ $attributes['link-label'] ?? 'View' }}</a>
+                                href="{{ route($showRouteName, ['table' => $table['name'], 'id' => $row->id]) }}">{{ $attributes['link-label'] ?? 'View' }}</a>
                         @endif
                     </td>
                     @foreach ($columns as $column => $properties)

@@ -7,7 +7,7 @@
         @foreach ($columns as $column => $properties)
             <tr>
                 <td class="{{ $attributes['td-class'] ?? '' }}">{{ $column }}</td>
-                <td class="{{ $attributes['td-class'] ?? '' }}">{{ $properties->getType()->getName() }} </td>
+                <td class="{{ $attributes['td-class'] ?? '' }}">{{ $properties['type_name'] }} </td>
             </tr>
         @endforeach
     </tbody>

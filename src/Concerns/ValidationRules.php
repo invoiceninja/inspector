@@ -6,8 +6,8 @@ trait ValidationRules
 {
     public function generateValidationFields(string $column, array $columns): array
     {
-        if (!\in_array($column, $columns)) {
-            // ..
+        if (!\in_array($column, \array_keys($columns), true)) {
+            return [];
         }
 
         $column = $columns[$column];
@@ -37,28 +37,28 @@ trait ValidationRules
         return $requestBody;
     }
 
-    private static function type(\Doctrine\DBAL\Schema\Column $column, &$rules): void
+    private static function type(array $column, &$rules): void
     {
-        switch ($column->getType()) {
-            case '\Integer':
-            case '\SmallInt':
+        switch ($column['type_name']) {
+            case 'integer':
+            case 'smallint':
                 \array_push($rules, 'int');
                 \array_push($rules, 'numeric');
                 break;
 
-            case '\String':
+            case 'string':
                 \array_push($rules, 'string');
                 break;
 
-            case '\Decimal':
+            case 'decimal':
                 \array_push($rules, 'between:0,99.99');
                 break;
 
-            case '\Date': 
+            case 'date':
                 \array_push($rules, 'date');
                 break;
 
-            case '\DateTime':
+            case 'datetime':
                 \array_push($rules, 'date_format:Y-m-d\TH:i');
                 break;
 
@@ -67,25 +67,25 @@ trait ValidationRules
         }
     }
 
-    private static function length(\Doctrine\DBAL\Schema\Column $column, &$rules): void
+    private static function length(array $column, &$rules): void
     {
-        if (\is_null($column->getLength()) || $column->getLength() === 0) {
+        if (\is_null($column['length']) || $column['length'] === 0) {
             return;
         }
 
-        if ($column->getName() === 'created_at' || $column->getName() === 'updated_at' || $column->getName() === 'deleted_at') {
+        if (\in_array($column['name'], ['created_at', 'updated_at', 'deleted_at'], true)) {
             return;
         }
 
-        \array_push($rules, \sprintf('max:%s', $column->getLength()));
+        \array_push($rules, \sprintf('max:%s', $column['length']));
     }
 
-    private static function required(\Doctrine\DBAL\Schema\Column $column, &$rules): void
+    private static function required(array $column, &$rules): void
     {
-        if ($column->getNotNull()) {
-            \array_push($rules, 'required');
-        } else {
+        if ($column['nullable']) {
             \array_push($rules, 'nullable');
+        } else {
+            \array_push($rules, 'required');
         }
     }
 }

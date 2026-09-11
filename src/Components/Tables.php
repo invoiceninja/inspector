@@ -3,7 +3,6 @@
 namespace InvoiceNinja\Inspector\Components;
 
 use Illuminate\Contracts\View\View;
-use Doctrine\DBAL\Schema\Column;
 
 class Tables extends BladeComponent
 {
