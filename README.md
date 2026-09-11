@@ -4,7 +4,7 @@
 
 <!-- [![Latest Version on Packagist](https://img.shields.io/packagist/v/invoiceninja/inspector.svg?style=flat-square)](https://packagist.org/packages/invoiceninja/inspector)
 [![Total Downloads](https://img.shields.io/packagist/dt/invoiceninja/inspector.svg?style=flat-square)](https://packagist.org/packages/invoiceninja/inspector)
-![GitHub Actions](https://github.com/invoiceninja/inspector/actions/workflows/main.yml/badge.svg) -->
+![GitHub Actions](https://github.com/invoiceninja/inspector/actions/workflows/tests.yml/badge.svg) -->
 
 Simplified database records management. Inspector will let you take care of [CRUD](https://en.wikipedia.org/wiki/Create,_read,_update_and_delete) without taking over your frontend.
 
@@ -237,7 +237,7 @@ With configuration published, you can control visible tables, as well as hidden,
 
 - `getTableSchema(string $table): array` - Retrieve table metadata.
 
-- `getTableColumns(string $table): array` - Retrieve all columns for specified table.
+- `getTableColumns(string $table): array` - Retrieve all columns for specified table, keyed by column name. Each column is an array with `name`, `type`, `type_name`, `nullable`, and `length` keys.
 
 - `getTable(string $table): Illuminate\Database\Query\Builder` - Table instance of query builder.
 
